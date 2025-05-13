@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redirecting to Chat</title>
+  </head>
+  <body>
+    <script>
+      fetch('/chat?q=hello', {
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.body.innerText = "Bot: " + data.reply;
+      })
+      .catch(err => {
+        document.body.innerText = "Lỗi: " + err.message;
+      });
+    </script>
+  </body>
+</html>
